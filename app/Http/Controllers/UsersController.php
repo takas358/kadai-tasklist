@@ -20,6 +20,12 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        
+        //他のユーザへアクセスしようとする場合、トップページにリダイレクト
+        if (\Auth::id() !== $user->user_id){
+            return redirect('/');
+        }
+        
         $tasks = $user->tasks()->orderBy('created_at', 'desc')->paginate(10);
         
         $data = [
