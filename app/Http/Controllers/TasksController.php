@@ -118,8 +118,6 @@ class TasksController extends Controller
     {
         $task = \App\Task::find($id);
         
-        print $task->user_id;
-        
         if (\Auth::id() === $task->user_id) {
             $task->delete();
         }
