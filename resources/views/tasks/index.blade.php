@@ -23,7 +23,11 @@
                 @endforeach
             </tbody>
         </table>
+    @else
+        <p>現在、登録されているタスクはありません。</p>
     @endif
+    
+    {{ $tasks->links('pagination::bootstrap-4') }}
     
     {!! link_to_route('tasks.create', '新規タスクの登録', [], ['class' => 'btn btn-primary']) !!}
 
