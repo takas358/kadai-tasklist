@@ -21,7 +21,7 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         
-        //他のユーザへアクセスしようとする場合、トップページにリダイレクト
+        //他ユーザへアクセスしようとする場合、トップページにリダイレクト
         if (\Auth::id() !== $user->user_id){
             return redirect('/');
         }
